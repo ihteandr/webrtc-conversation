@@ -40,9 +40,7 @@ Conversation.prototype.createOffer = async function(stream) {
 
 Conversation.prototype.initByAnswer = function (answer) {
     let answerDescription = new RTCSessionDescription(answer);
-    this.connection.setRemoteDescription(answerDescription, () => {
-
-    }, (e) => {
+    this.connection.setRemoteDescription(answerDescription, () => {}, (e) => {
         console.log('error with set remote descr', e);
     });
 };
@@ -85,19 +83,17 @@ Conversation.prototype.initCoonection = function(){
             });
         };
 
-        let isNestedNegoriation = true;
-        this.connection.onnegotiationneeded = (e) => {
-        };
-        
-        this.connection.oniceconnectionstatechange = (e) => {
+        this.connection.oniceconnectionstatechange = () => {
             if (this.connection.iceConnectionState == 'disconnected') {
                 this.video.remove();
                 this.onDisconnect();
             }
         };
 
-        this.connection.onsignalingstatechange = (e) => {  // Workaround for Chrome: skip nested negotiations
-        };
+        this.connection.onnegotiationneeded = () => {};
+        
+        this.connection.onsignalingstatechange = () => {};
+
         this.connection.onerror = (e) => {
             console.log('PC error', e);
         };   
