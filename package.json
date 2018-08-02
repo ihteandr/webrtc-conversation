@@ -1,0 +1,9 @@
+{
+  "name": "athlios-webrtc-example",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1",
+    "uuid": "^3.3.2"
+  }
+}

@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+        <script src='./socket.io.js'></script>
+        <script src='./fix-sin-wave.js'></script>
+        <script src='./conversation.js'></script>
+        <script src="./multi_script.js"></script>
+        <style>
+            video {
+                width: 30%;
+                margin: 1.5%;
+                vertical-align: middle;
+            }
+            h3{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <button onclick="start(event)">Start</button>
+            <input id="roomName" placeholder="Enter Room Name..."/>
+        </div>
+    </body>
+
+</html>
